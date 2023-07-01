@@ -10,9 +10,7 @@ use minigrep::{Config, run};
 
 fn main() {
     //notice that the first argument is always the name of the binary --> we don't need it in this program
-    let args: Vec<String> = env::args().collect();
-
-    let config = Config::build(&args).unwrap_or_else(|err| {
+    let config = Config::build(env::args()).unwrap_or_else(|err| {
         //print to stderr rather than stdout with eprintln! macro for error messages
         eprintln!("Problem parsing arguments: {err}");
         process::exit(1);
